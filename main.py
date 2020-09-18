@@ -5,6 +5,7 @@ import os
 import webbrowser
 import smtplib
 import datetime
+import random
 # import requests
 
 engine = pyttsx3.init('sapi5')
@@ -110,13 +111,14 @@ if __name__ == "__main__":
             webbrowser.open("geeksforgeeks.org")
 
         elif 'time' in query:
-            strTime = datetime.datetime.now().strftime("%I:%M:%S")    
+            strTime = datetime.datetime.now().strftime("%I:%M:%S")   
+            print(f"Sir, the time is {strTime}")
             speak(f"Sir, the time is {strTime}")
 
-        elif 'introduce' in query:
+        elif 'hello' in query:
             speak("I am Jenny 1.0")
-            speak("I am designed by Soham Das in his room, as he was very depressed, so he built me, to share his feelings, and i am happy with it")
-            speak("i am always ready to help anyone, in return of love")
+            speak("I am designed by Soham Das in his room, and i am happy with it")#, as he was very depressed, so he built me, to share his feelings, 
+            speak("i am always ready to help anyone")#, in return of love
 
         elif 'open vs code' in query:
             speak("Opening visual,studio,code")
@@ -132,10 +134,11 @@ if __name__ == "__main__":
             # print("What about you?")
         
         elif 'email to shubham' and 'send email' in query:
+            dict = ['sohamdas.m6056@gmail.com', 'swarnavadas2014@gmail.com', 'soumavadas1962@gmail.com']
             try:
                 speak("What should I say?")
                 content = takeCommand()
-                to = "shubham.jha2001m@gmail.com"    
+                to = random.choice(dict)
                 sendEmail(to, content)
                 speak("Email has been sent!")
             except Exception as e:
