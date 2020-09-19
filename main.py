@@ -60,7 +60,7 @@ if __name__ == "__main__":
     wishMe()
     while True:
         query = takeCommand().lower()
-
+# searches
         if 'wikipedia' in query:
             speak("Searching")
             query = query.replace("wikipedia", "")
@@ -68,13 +68,7 @@ if __name__ == "__main__":
             speak("According to wikipedia")
             speak(results)
         
-        elif 'tell some jokes' in query:
-            print("Why did the cowboy buy a dachshund? Someone told him to get a long little doggy.")
-            speak("Why did the cowboy buy a dachshund? Someone told him to get a long little doggy.")
-        elif 'tell me something interesting' in query:
-            print("It's estimated that there are 75 quintillion grains of sand on Earth. That's 75 with 17 zeros after it!")
-            speak("It's estimated that there are 75 quintillion grains of sand on Earth. That's 75 with 17 zeros after it!")
-
+     
         # elif 'how is the weather' and 'weather' in query:
 
         #     url = 'https://api.openweathermap.org/'#Open api link here
@@ -109,16 +103,32 @@ if __name__ == "__main__":
         elif 'open geeks for geeks' in query:
             speak("opening geeksforgeeks")
             webbrowser.open("geeksforgeeks.org")
-
+#time
         elif 'time' in query:
             strTime = datetime.datetime.now().strftime("%I:%M:%S")   
             print(f"Sir, the time is {strTime}")
             speak(f"Sir, the time is {strTime}")
-
+#introduction and chats
         elif 'hello' in query:
             speak("I am Jenny 1.0")
             speak("I am designed by Soham Das in his room, and i am happy with it")#, as he was very depressed, so he built me, to share his feelings, 
             speak("i am always ready to help anyone")#, in return of love
+        elif "what\'s up" in query or 'how are you' in query:
+            stMsgs = ['Just doing my thing!', 'I am fine!', 'Nice!', 'I am nice and full of energy','i am okey ! How are you']
+            ans_q = random.choice(stMsgs)
+            speak(ans_q)  
+            ans_take_from_user_how_are_you = takeCommand()
+            if 'fine' in ans_take_from_user_how_are_you or 'happy' in ans_take_from_user_how_are_you or 'okey' in ans_take_from_user_how_are_you:
+                speak('okey..')  
+            elif 'not' in ans_take_from_user_how_are_you or 'sad' in ans_take_from_user_how_are_you or 'upset' in ans_take_from_user_how_are_you:
+                speak('oh sorry..')  
+      
+        elif "your feeling" in query:
+            print("feeling Very sweet after meeting with you")
+            speak("feeling Very sweet after meeting with you") 
+
+
+# openings
 
         elif 'open vs code' in query:
             speak("Opening visual,studio,code")
@@ -128,11 +138,15 @@ if __name__ == "__main__":
             speak("opening c++, and try to complete atleast 10 problems")
             codePath="D:\\Dev-Cpp\\devcpp.exe"
             os.startfile(codePath)
-        elif 'how are you' in query:
-            speak("I am fine!!")
-            speak("What about you?")
-            # print("What about you?")
-        
+        # elif 'how are you' in query:
+        #     speak("I am fine!!")
+        #     speak("What about you?")
+        #     # print("What about you?")
+
+# email
+
+
+
         elif 'email to shubham' and 'send email' in query:
             dict = ['sohamdas.m6056@gmail.com', 'swarnavadas2014@gmail.com', 'soumavadas1962@gmail.com']
             try:
@@ -144,7 +158,15 @@ if __name__ == "__main__":
             except Exception as e:
                 print(e)
                 speak("Sorry my friend . I am not able to send this email")  
-            
+        
+        elif 'tell some jokes' in query:
+            print("Why did the cowboy buy a dachshund? Someone told him to get a long little doggy.")
+            speak("Why did the cowboy buy a dachshund? Someone told him to get a long little doggy.")
+        elif 'tell me something interesting' in query:
+            print("It's estimated that there are 75 quintillion grains of sand on Earth. That's 75 with 17 zeros after it!")
+            speak("It's estimated that there are 75 quintillion grains of sand on Earth. That's 75 with 17 zeros after it!")
+
+# shut down
         elif 'sleep' in query:
             speak("ok sir shutting down the system")
             quit()
