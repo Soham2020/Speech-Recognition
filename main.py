@@ -49,7 +49,7 @@ def takeCommand():
         query = r.recognize_google(audio, language='en-in')
         print(f"Soham said: {query}\n")
     except Exception as e:
-        # print(e)
+        print(e)
         print("Say that again....")
         speak("Say that again")
         return "None"
@@ -165,6 +165,28 @@ if __name__ == "__main__":
         elif 'tell me something interesting' in query:
             print("It's estimated that there are 75 quintillion grains of sand on Earth. That's 75 with 17 zeros after it!")
             speak("It's estimated that there are 75 quintillion grains of sand on Earth. That's 75 with 17 zeros after it!")
+
+# game
+        elif 'game' in query:
+            speak("Choose among, rock, scissor and stone")
+            print("Choose among, rock, scissor and stone")
+            pmove = str(input())
+            moves = ["rock", "stone", "scissor"]
+            cmove = random.choice(moves)
+            if pmove==cmove:
+                speak("the match is draw")
+            elif pmove== "rock" and cmove== "scissor":
+                speak("you wins")
+            elif pmove== "rock" and cmove== "paper":
+                speak("hurray!!!, i wins")
+            elif pmove== "paper" and cmove== "rock":
+                speak("you wins")
+            elif pmove== "paper" and cmove== "scissor":
+                speak("hurray!!, wins")
+            elif pmove== "scissor" and cmove== "paper":
+                speak("you wins")
+            elif pmove== "scissor" and cmove== "rock":
+                speak("huraay!!, i wins")
 
 # shut down
         elif 'sleep' in query:
