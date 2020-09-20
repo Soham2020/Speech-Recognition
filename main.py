@@ -188,6 +188,17 @@ if __name__ == "__main__":
             elif pmove== "scissor" and cmove== "rock":
                 speak("huraay!!, i wins")
 
+# toss
+        elif 'toss' in query:
+            moves = ['head', 'tail']
+            tmove = random.choice(moves)
+            speak("I choose " + tmove)
+
+        elif 'location' in query:
+            url = "https://www.google.com/maps/search/Where+am+I+?/"
+            webbrowser.get().open(url)
+            speak("You must be somewhere near here, as per Google maps") 
+
 # shut down
         elif 'sleep' in query:
             speak("ok sir shutting down the system")
