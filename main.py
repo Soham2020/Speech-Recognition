@@ -13,7 +13,13 @@ voices = engine.getProperty('voices')
 # print(voices[0].id) -> DAVID 
 # print(voices[1].id) -> ZIRA
 engine.setProperty('voice', voices[1].id)
-
+emaildict = {   
+                "soham" : "bppcs.11500119115@gmail.com", 
+                "subhrakanti" : "bppcs.11500119116@gmail.com", 
+                "tathagata" : "bppcs11500119117@gmail.com", 
+                "sourasish" : "bppcs.11500119119@gmail.com", 
+                "swarnava" : "swarnavadas2014@gmail.com"
+            }
 def speak(audio):       #speak function
     engine.say(audio)
     engine.runAndWait()
@@ -32,8 +38,8 @@ def sendEmail(to, content):
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.ehlo()
     server.starttls()
-    server.login('sohamdas8697@gmail.com', 'PASSWORD')
-    server.sendmail('Senderemail@gmail.com', to, content)
+    server.login('sohamdas8697@gmail.com', 'soham8697')
+    server.sendmail('sohamdas8697@gmail.com', to, content)
     server.close()
 
 def takeCommand():
@@ -92,22 +98,29 @@ if __name__ == "__main__":
         #     print('Description : {}'.format(description))
         #     print('weather is: {} '.format(weather))
         #     speak('weather is : {} '.format(weather))
+        elif 'weather' in query:
+            area = webbrowser.open("https://www.google.com/search?q=weather")
+            speak("Weather forcast of area is")
 
-
-        elif 'open google' in query:
+        elif 'search' in query:
+            query=query.replace("search","")
             speak("opening Google baaba")
-            webbrowser.open("google.com")
-        elif 'open youtube' in query:
+            webbrowser.open("https://www.google.com/search?q="+query)
+        elif 'play' in query:
+            query=query.replace("play", "")
             speak("opening youtube")
-            webbrowser.open("youtube.com")
+            webbrowser.open("https://www.youtube.com/results?search_query="+query)
         elif 'open geeks for geeks' in query:
             speak("opening geeksforgeeks")
             webbrowser.open("geeksforgeeks.org")
 #time
         elif 'time' in query:
             strTime = datetime.datetime.now().strftime("%I:%M:%S")   
+            # strDate = datetime.datetime.now().strftime("%d-%m-20%y")
             print(f"Sir, the time is {strTime}")
+            # print(f"Sir, the date is {strDate}")
             speak(f"Sir, the time is {strTime}")
+            # speak(f"Sir, the date is {strDate}")
 #introduction and chats
         elif 'hello' in query:
             speak("I am Jenny 1.0")
@@ -143,21 +156,20 @@ if __name__ == "__main__":
         #     speak("What about you?")
         #     # print("What about you?")
 
-# email
-
-
-
-        elif 'email to shubham' and 'send email' in query:
-            dict = ['sohamdas.m6056@gmail.com', 'swarnavadas2014@gmail.com', 'soumavadas1962@gmail.com']
+# email 
+        elif 'send an email to' in query:
             try:
+                query = query.replace("send an email to ", "")
+                to = emaildict[query]
                 speak("What should I say?")
-                content = takeCommand()
-                to = random.choice(dict)
+                print("What should I say?")
+                content = takeCommand()    
                 sendEmail(to, content)
-                speak("Email has been sent!")
-            except Exception as e:
-                print(e)
-                speak("Sorry my friend . I am not able to send this email")  
+                speak("Your email has been sent succesfully!")
+                print("Your email has been sent succesfully!")
+            except Exception:
+                speak("Sorry! I am not able to send this email")
+                print("Sorry! I am not able to send this email")
         
         elif 'tell some jokes' in query:
             print("Why did the cowboy buy a dachshund? Someone told him to get a long little doggy.")
@@ -198,6 +210,10 @@ if __name__ == "__main__":
             url = "https://www.google.com/maps/search/Where+am+I+?/"
             webbrowser.get().open(url)
             speak("You must be somewhere near here, as per Google maps") 
+        
+        elif 'ipl' in query:
+            webbrowser.get().open("https://www.iplt20.com/")
+            speak("Enjoy the live matches")
 
 # shut down
         elif 'sleep' in query:
