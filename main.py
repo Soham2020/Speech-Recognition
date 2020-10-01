@@ -21,10 +21,6 @@ emaildict = {
                 "sourasish" : "bppcs.11500119119@gmail.com", 
                 "swarnava" : "swarnavadas2014@gmail.com"
             }
-# whatsapp = {
-#     "Suraj" : "+918240509286",
-#     "subhrakanti" : "+917044124579"
-# }
 def speak(audio):       #speak function
     engine.say(audio)
     engine.runAndWait()
@@ -82,7 +78,7 @@ if __name__ == "__main__":
      
         elif 'weather' in query:
 
-            url = 'http://api.openweathermap.org/data/2.5/weather?q=Kolkata&appid=84996683165caf523477d96ede6636cd'#Open api link here
+            url = 'http://api.openweathermap.org/data/2.5/weather?q=Kolkata&appid=API-KEY'#Open api link here
 
             res = requests.get(url)
 
@@ -175,10 +171,15 @@ if __name__ == "__main__":
                 print("Sorry! I am not able to send this email")
 
         elif 'message' in query:
+            speak("Whom I will send message?")
+            print("Whom I will send message?")
+            per = {
+                ######
+            }           #list of my contacts
+            per = str(input())
             speak("What should I say?")
-            print("What should I say?")
             content = takeCommand()
-            kit.sendwhatmsg("+919830920321", content, 19,4)
+            kit.sendwhatmsg("+91"+per, content, hr,sec)
             speak("Message had been sent successfully")
 
         
