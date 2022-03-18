@@ -1,6 +1,6 @@
 # Speech Recongnition - Jenny 1.1
 
-<img src="https://github.com/Soham2020/Speech-Recognition/blob/master/jenny.jpg?raw=true"/>
+<div align="center"><img src="https://github.com/Soham2020/Speech-Recognition/blob/master/jenny.jpg?raw=true" width="300px" height="200px"/></div>
 
 ## `Desc`
 It is a speech recongintion application using python modules:
