@@ -1,6 +1,5 @@
 # Speech Recongnition - Jenny 1.1
 
-## `Desc`
 It is a speech recongintion application using python modules:
 1. **speechrecognition**
 2. **python3-pyaudio**
